@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-	<link rel="icon" href="../../../../favicon.ico">
+    <link rel="icon" href="../../../../favicon.ico">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+
 
     <title>My_Portfolio</title>
 
@@ -17,115 +17,67 @@
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
 
     <!-- Custom styles for this template -->
-    <link href="album.css" rel="stylesheet">
 	<style>
-		body{
-			background-image: url({% static "bg.jpg" %});
-			background-size: cover;
-			background-attachment: fixed;
-			height: 500px;
-		}
 		hr {
            display: block;
            height: 1px;
            border: 0;
-           border-top: 1px solid white;
+           border-top: 1px solid grey;
            margin: 1em 0;
            padding: 0; 
         }
-		h1 {
-			font-family: trebuchet MS;
-		}
-		.button {
-			color: blue;
-		}
-		.navbar-toggler .navbar-toggler-icon {
-			border-color: blue;
-		}
-		.ham {
-			color: blue;
-		}
 	</style>
   </head>
 
   <body>
 
     <header>
-	<nav class="navbar navbar-expand-lg fixed-top navbar-none bg-none">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<a href="{% url 'home' %}"><img src="{% static 'logo2.png' %}" width="100px" height="60px" /></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"><i class="fas fa-bars ham"></i></span>
+				<span class="navbar-toggler-icon"></span>
 			</button>
 		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-			<div class="navbar-nav ml-auto" style="font-size: 20px; padding-right: 30px;">
+			<div class="navbar-nav ml-auto">
 				<a class="nav-item nav-link" href="{% url 'about' %}">About</a>
-				<a class="nav-item nav-link" href="{% url 'allblog' %}">Blog</a>
+				<a class="nav-item nav-link active" href="{% url 'allblog' %}">Blog</a>
 				<a class="nav-item nav-link" href="{% static 'Aditya CV.pdf' %}">Resume</a>
 			</div>
 		</div>
 	</nav>
     </header>
-	<br/>
-	<br/>
+
     <main role="main">
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<section class="jumbotron text-center">
-        <div class="container">
-          <h1 class="jumbotron-heading">Hey there, I'm Aditya</h1>
-          <p class="lead text-muted">I'm a NOOBie addicted to this field of work. I'm here to express myself.</br><strong>Let's Explore ME!</strong></p>
-          <p>
+	<div class="container">
+      <h1 class="text-center pt-3">Hey, You are on my Blog Page</h1>
+	  <br/>
+	  <br/>
+	  <h2>Latest Blogs</h2>
+	 
+	  
+	  <hr/>
+	  <div class="rows">
+	  {% for blog in blogs.all %}
+	  
+		<div class="col-md-4">
+			<a href="{% url 'detail' blog.id %}"><h4>{{blog.tittle}}</h4></a>
+			{{blog.fancy_time}}
 			<br/>
-			<br/>
-            <a href="mailto:adityarajvarma26@gmail.com" class="btn btn-primary">Email Me!</a>
-          </p>
-        </div>
-     </section>
-	<br/>
-	<br/>
-	<br/>
-      <div class="album py-5 pt -5 bg-light">
-        <div class="container">
-		<h1 class="heading pb-3">My Projects</h1>
-
-          <div class="row">
-		  
-			{% for job in jobs.all %}
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow">
-                <img class="card-img-top" src="{{ job.image.url }}" alt="job_pic">
-                <div class="card-body">
-                  <p class="card-text">{{job.summary}}</p>
-                  
-                </div>
-              </div>
-            </div>
-            {% endfor %}
-          </div>
-		  <h1 class="heading pb-3 pt-3">My Specialization</h1>
-			<div class="row">
-			{% for qual in quals.all %}
-			<div class="col-md-1.1">
-				<div class="card" style="width: 10rem;">
-					<img class="card-img-top" src="{{ qual.image.url }}" alt="{{ qual.tittle }}" >
-					<div class="card-body">
-					<p class="card-text" style="text-align: center; font-family: garamond;"><strong>{{ qual.tittle }}</strong></p>
-					</div>
-				</div>
-			</div>
-			{% endfor %}
-			</div>
-        </div>
-      </div>
-
+			<image class="img-fluid" src="{{blog.image.url}}"/>
+			{{blog.summary}}
+		</div>
+		<br/>
+	  
+	  {% endfor %}
+	  </div>
+	</div>
+	
     </main>
 
     <footer class="bg-dark">
     <div class="container text-white">
 		<div class="row">
-                    <div class='col-lg-6 pt-3'>
+                    <div class='col-lg-6 vl pt-3'>
                         <h2 style="font-family: garamond">About</h2>
 						<hr/>
 						<p>

@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 	{% load staticfiles %}
@@ -8,8 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-	<link rel="icon" href="../../../../favicon.ico">
+    <link rel="icon" href="../../../../favicon.ico">
 
     <title>My_Portfolio</title>
 
@@ -36,93 +34,55 @@
 		h1 {
 			font-family: trebuchet MS;
 		}
-		.button {
-			color: blue;
-		}
-		.navbar-toggler .navbar-toggler-icon {
-			border-color: blue;
-		}
-		.ham {
-			color: blue;
+		.active {
+			color: white;
 		}
 	</style>
   </head>
-
   <body>
 
     <header>
 	<nav class="navbar navbar-expand-lg fixed-top navbar-none bg-none">
 		<a href="{% url 'home' %}"><img src="{% static 'logo2.png' %}" width="100px" height="60px" /></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"><i class="fas fa-bars ham"></i></span>
+				<span class="navbar-toggler-icon"></span>
 			</button>
 		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 			<div class="navbar-nav ml-auto" style="font-size: 20px; padding-right: 30px;">
-				<a class="nav-item nav-link" href="{% url 'about' %}">About</a>
+				<a class="nav-item nav-link active" href="{% url 'about' %}">About</a>
 				<a class="nav-item nav-link" href="{% url 'allblog' %}">Blog</a>
 				<a class="nav-item nav-link" href="{% static 'Aditya CV.pdf' %}">Resume</a>
 			</div>
 		</div>
 	</nav>
     </header>
-	<br/>
-	<br/>
-    <main role="main">
+	<main role="main">
 	<br/>
 	<br/>
 	<br/>
 	<br/>
 	<section class="jumbotron text-center">
-        <div class="container">
-          <h1 class="jumbotron-heading">Hey there, I'm Aditya</h1>
-          <p class="lead text-muted">I'm a NOOBie addicted to this field of work. I'm here to express myself.</br><strong>Let's Explore ME!</strong></p>
-          <p>
-			<br/>
-			<br/>
-            <a href="mailto:adityarajvarma26@gmail.com" class="btn btn-primary">Email Me!</a>
-          </p>
-        </div>
-     </section>
-	<br/>
-	<br/>
-	<br/>
-      <div class="album py-5 pt -5 bg-light">
-        <div class="container">
-		<h1 class="heading pb-3">My Projects</h1>
-
-          <div class="row">
-		  
-			{% for job in jobs.all %}
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow">
-                <img class="card-img-top" src="{{ job.image.url }}" alt="job_pic">
-                <div class="card-body">
-                  <p class="card-text">{{job.summary}}</p>
-                  
-                </div>
-              </div>
-            </div>
-            {% endfor %}
-          </div>
-		  <h1 class="heading pb-3 pt-3">My Specialization</h1>
-			<div class="row">
-			{% for qual in quals.all %}
-			<div class="col-md-1.1">
-				<div class="card" style="width: 10rem;">
-					<img class="card-img-top" src="{{ qual.image.url }}" alt="{{ qual.tittle }}" >
+		<div class="container">
+        <h2 style="color: grey; font-family: garamond;">Holla! It's Me.</h2>
+			<div class="row" style="justify-content: center;">
+			<div class="card hoverable" style="width: 18rem; ">
+					<img class="card-img-top" src="{% static 'IMG-20180628-WA0005.jpg' %}" >
 					<div class="card-body">
-					<p class="card-text" style="text-align: center; font-family: garamond;"><strong>{{ qual.tittle }}</strong></p>
+						<p class="card-text" style="text-align: center; font-family: garamond;">AIDTYA</p>
+						<p class="text-muted">Student</p>
+						<p><i class="fas fa-university"></i>JECRC University</p>
+                            <p class="text-muted">I'm just a Web Developer who wanna express himself and proceed in the field by learning new things.<br>I want to create my own visual style… letting it unique for myself and yet identifiable for others.<br>“There are three responses to a piece of design – yes, no, and WOW! Wow is the one to aim for.”<br><p style="text-align: right;"> -Milton Glaser</p>THATS HOW I DEAL!</strong></p>
+  
+      					<a href="#"><i class="fab fa-instagram" style="color: black;"></i></a> 
+					 	<a href="#"><i class="fab fa-linkedin-in" style="color: black;"></i></a> 
+						<a href="#"><i class="fab fa-facebook-f" style="color: black;"></i></a>
 					</div>
-				</div>
 			</div>
-			{% endfor %}
 			</div>
-        </div>
-      </div>
-
-    </main>
-
-    <footer class="bg-dark">
+		</div>
+	</section>
+	</main>
+	<footer class="bg-dark">
     <div class="container text-white">
 		<div class="row">
                     <div class='col-lg-6 pt-3'>
