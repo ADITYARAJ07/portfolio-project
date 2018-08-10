@@ -4,7 +4,7 @@ class Blog(models.Model):
 	tittle=models.CharField(max_length=20)
 	pub_date=models.DateTimeField()
 	body=models.TextField()
-	image=models.ImageField(upload_to='\images')
+	image=models.ImageField(upload_to='images')
 	
 	def __str__(self):
 		return self.tittle
